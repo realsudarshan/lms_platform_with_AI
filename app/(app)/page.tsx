@@ -325,7 +325,34 @@ className="w-4 h-4 text-amber-400 fill-amber-400"
 </section>   
 
         {/* CTA Section */}
-     
+     <section className="px-6 lg:px-12 py-20 max-w-7xl mx-auto">
+<div className="relative rounded-3xl bg-gradient-to-br from-emerald-600/20 via-teal-600/10 to-cyan-600/20 border border-white/10 p-12 md:p-20 text-center overflow-hidden">
+{/* Animated gradient border */}
+<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 blur-xl" />
+
+<div className="relative z-10">
+<div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-emerald-500/30">
+<Rocket className="w-8 h-8 text-white" />
+</div>
+<h2 className="text-3xl md:text-5xl font-bold mb-6">
+Ready to ace your exams?
+</h2>
+<p className="text-zinc-400 text-lg max-w-xl mx-auto mb-10">
+Start with free courses or unlock everything with Pro and Ultra.
+Your learning journey begins now.
+</p>
+<Link href="/pricing">
+<Button
+size="lg"
+className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white border-0 shadow-xl shadow-emerald-600/30 px-10 h-14 text-lg font-semibold"
+>
+View Pricing
+<ArrowRight className="w-5 h-5 ml-2" />
+</Button>
+</Link>
+</div>
+</div>
+</section>
         {/* Footer */}
         <footer className="px-6 lg:px-12 py-12 border-t border-zinc-800/50 max-w-7xl mx-auto">
 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
