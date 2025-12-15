@@ -144,6 +144,119 @@ const isSignedIn = await currentUser().then(user => !!user);
         </section>
 
        {/*Pricing modeal*/}
+       <section className="px-6 lg:px-12 py-20 max-w-7xl mx-auto">
+<div className="grid md:grid-cols-3 gap-6">
+{[
+{
+tier: "Free",
+icon: Rocket,
+color: "emerald",
+gradient: "from-emerald-500 to-teal-600",
+bgGlow: "bg-emerald-500/10",
+borderColor: "border-emerald-500/20",
+description: "Start your journey with foundational courses",
+features: [
+"School syllabus basics",
+"Community access",
+"Practice quizzes",
+],
+},
+{
+tier: "Pro",
+icon: Crown,
+color: "emerald",
+gradient: "from-emerald-500 to-teal-600",
+bgGlow: "bg-emerald-500/10",
+borderColor: "border-emerald-500/30",
+description: "Complete syllabus coverage with exam preparation",
+features: [
+"All Free content",
+"Full syllabus courses",
+"Doubt clearing sessions",
+"Certificates",
+],
+popular: true,
+},
+{
+tier: "Ultra",
+icon: Trophy,
+color: "cyan",
+gradient: "from-cyan-400 to-blue-600",
+bgGlow: "bg-cyan-500/10",
+borderColor: "border-cyan-500/20",
+description:
+"Premium learning with AI tutor & personal mentorship",
+features: [
+"Everything in Pro",
+"AI Learning Assistant",
+"Competitive exam prep",
+"1-on-1 mentorship",
+],
+},
+].map((plan) => (
+<div
+key={plan.tier}
+className={`relative p-8 rounded-2xl ${plan.bgGlow} border ${plan.borderColor} ${plan.popular ? "ring-2 ring-emerald-500/50" : ""} transition-all duration-300 hover:scale-[1.02]`}
+>
+{plan.popular && (
+<div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-xs font-semibold">
+Most Popular
+</div>
+)}
+<div
+className={`w-12 h-12 rounded-xl bg-gradient-to-br ${plan.gradient} flex items-center justify-center mb-4 shadow-lg`}
+>
+<plan.icon className="w-6 h-6 text-white" />
+</div>
+<h3 className="text-2xl font-bold mb-2">{plan.tier}</h3>
+<p className="text-zinc-400 text-sm mb-6">{plan.description}</p>
+<ul className="space-y-3">
+{plan.features.map((feature) => (
+<li
+key={feature}
+className="flex items-center gap-2 text-sm text-zinc-300"
+>
+<CheckCircle2
+className={`w-4 h-4 ${plan.color === "emerald" ? "text-emerald-400" : plan.color === "teal" ? "text-teal-400" : "text-cyan-400"}`}
+/>
+{feature}
+</li>
+))}
+</ul>
+</div>
+))}
+</div>
+</section>
+
+{/* Featured Courses */}
+<section id="courses" className="px-6 lg:px-12 py-20 max-w-7xl mx-auto">
+<div className="text-center mb-16">
+<h2 className="text-3xl md:text-5xl font-bold mb-4">
+Courses built for{" "}
+<span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+real results
+</span>
+</h2>
+<p className="text-zinc-400 text-lg max-w-2xl mx-auto">
+Each course is structured with modules and lessons designed to help
+you excel in your academics and beyond.
+</p>
+</div>
+
+
+<div className="text-center mt-10">
+<Link href="/dashboard">
+<Button
+variant="outline"
+className="border-zinc-700 bg-white/5 text-white hover:bg-white/10 hover:text-white"
+>
+View All Courses
+<ArrowRight className="w-4 h-4 ml-2" />
+</Button>
+</Link>
+</div>
+</section>
+       
         {/* Testimonials */}
        
 
