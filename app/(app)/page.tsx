@@ -18,11 +18,15 @@ import {
 } from "lucide-react";
 import { sanityFetch } from "@/sanity/lib/live";
 import { currentUser } from "@clerk/nextjs/server";
+import { FEATURED_COURSES_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home() {
-  // Fetch featured courses, stats, and check auth status
 const isSignedIn = await currentUser().then(user => !!user);
-
+  // Fetch featured courses, stats, and check auth status
+  const [{ data: courses }, user] = await Promise.all([
+    sanityFetch({ query: FEATURED_COURSES_QUERY }),
+    currentUser(),
+  ]);
   return (
     <div className="min-h-screen bg-[#09090b] text-white overflow-hidden">
       {/* Animated gradient mesh background */}
