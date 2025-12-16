@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "typegen": "sanity schema extract && sanity typegen generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.36.2",
