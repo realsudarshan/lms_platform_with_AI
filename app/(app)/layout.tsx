@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { SanityLive } from "@/sanity/lib/live";
 import { ClerkProvider } from "@clerk/nextjs";
 
 function AppLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -6,7 +7,7 @@ function AppLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     <ClerkProvider>
         
       <div>{children}</div>
-      
+        <SanityLive />
     </ClerkProvider>
   );
 }
