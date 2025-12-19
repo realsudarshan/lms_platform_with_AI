@@ -70,3 +70,46 @@ export const DASHBOARD_COURSES_QUERY = defineQuery(`*[
   "moduleCount": count(modules),
   "lessonCount": count(modules[]->lessons[])
 }`);
+export const COURSE_WITH_MODULES_QUERY = defineQuery(`*[
+  _type == "course"
+  && slug.current == $slug
+][0] {
+  _id,
+  title,
+  slug,
+  description,
+  tier,
+  featured,
+  thumbnail {
+    asset-> {
+      _id,
+      url
+    }
+  },
+  category-> {
+    _id,
+    title
+  },
+  modules[]-> {
+    _id,
+    title,
+    description,
+    completedBy,
+    lessons[]-> {
+      _id,
+      title,
+      slug,
+      description,
+      completedBy,
+      video {
+        asset-> {
+          playbackId
+        }
+      }
+    }
+  },
+  completedBy,
+  "moduleCount": count(modules),
+  "lessonCount": count(modules[]->lessons[]),
+  "completedLessonCount": count(modules[]->lessons[]->completedBy[@==$userId])
+}`);
