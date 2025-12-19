@@ -68,7 +68,7 @@ export function CourseList({
                 placeholder="Search courses..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 bg-zinc-900/50 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-violet-500"
+                className="pl-10 bg-zinc-900/50 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-emerald-500"
               />
             </div>
           )}
@@ -105,7 +105,7 @@ export function CourseList({
                 setTierFilter("all");
                 setSearchQuery("");
               }}
-              className="mt-2 text-sm text-violet-400 hover:text-violet-300 transition-colors"
+              className="mt-2 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
             >
               Clear filters
             </button>
