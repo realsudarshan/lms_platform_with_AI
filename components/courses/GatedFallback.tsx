@@ -86,7 +86,7 @@ export function GatedFallback({ requiredTier }: GatedFallbackProps) {
         <Link href="/pricing">
           <Button
             size="lg"
-            className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white border-0 shadow-xl shadow-violet-600/30 px-8"
+            className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white border-0 shadow-xl shadow-emerald-600/30 px-8"
           >
             <Sparkles className="w-4 h-4 mr-2" />
             View Pricing Plans
