@@ -408,6 +408,48 @@ export type DASHBOARD_COURSES_QUERYResult = Array<{
   moduleCount: number | null;
   lessonCount: number | null;
 }>;
+// Variable: COURSE_WITH_MODULES_QUERY
+// Query: *[  _type == "course"  && slug.current == $slug][0] {  _id,  title,  slug,  description,  tier,  featured,  thumbnail {    asset-> {      _id,      url    }  },  category-> {    _id,    title  },  modules[]-> {    _id,    title,    description,    completedBy,    lessons[]-> {      _id,      title,      slug,      description,      completedBy,      video {        asset-> {          playbackId        }      }    }  },  completedBy,  "moduleCount": count(modules),  "lessonCount": count(modules[]->lessons[]),  "completedLessonCount": count(modules[]->lessons[]->completedBy[@==$userId])}
+export type COURSE_WITH_MODULES_QUERYResult = {
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  description: string | null;
+  tier: "free" | "pro" | "ultra" | null;
+  featured: boolean | null;
+  thumbnail: {
+    asset: {
+      _id: string;
+      url: string | null;
+    } | null;
+  } | null;
+  category: {
+    _id: string;
+    title: string | null;
+  } | null;
+  modules: Array<{
+    _id: string;
+    title: string | null;
+    description: string | null;
+    completedBy: Array<string> | null;
+    lessons: Array<{
+      _id: string;
+      title: string | null;
+      slug: Slug | null;
+      description: string | null;
+      completedBy: Array<string> | null;
+      video: {
+        asset: {
+          playbackId: string | null;
+        } | null;
+      } | null;
+    }> | null;
+  }> | null;
+  completedBy: Array<string> | null;
+  moduleCount: number | null;
+  lessonCount: number | null;
+  completedLessonCount: number | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -417,5 +459,6 @@ declare module "@sanity/client" {
     "*[\n  _type == \"course\"\n] | order(_createdAt desc) {\n  _id,\n  title,\n  slug,\n  description,\n  tier,\n  featured,\n  thumbnail {\n    asset-> {\n      _id,\n      url\n    }\n  },\n  \"moduleCount\": count(modules),\n  \"lessonCount\": count(modules[]->lessons[])\n}": ALL_COURSES_QUERYResult;
     "{\n  \"courseCount\": count(*[_type == \"course\"]),\n  \"lessonCount\": count(*[_type == \"lesson\"])\n}": STATS_QUERYResult;
     "*[\n  _type == \"course\"\n] | order(_createdAt desc) {\n  _id,\n  title,\n  slug,\n  description,\n  tier,\n  featured,\n  completedBy,\n  thumbnail {\n    asset-> {\n      _id,\n      url\n    }\n  },\n  category-> {\n    _id,\n    title\n  },\n  modules[]-> {\n    lessons[]-> {\n      completedBy\n    }\n  },\n  \"moduleCount\": count(modules),\n  \"lessonCount\": count(modules[]->lessons[])\n}": DASHBOARD_COURSES_QUERYResult;
+    "*[\n  _type == \"course\"\n  && slug.current == $slug\n][0] {\n  _id,\n  title,\n  slug,\n  description,\n  tier,\n  featured,\n  thumbnail {\n    asset-> {\n      _id,\n      url\n    }\n  },\n  category-> {\n    _id,\n    title\n  },\n  modules[]-> {\n    _id,\n    title,\n    description,\n    completedBy,\n    lessons[]-> {\n      _id,\n      title,\n      slug,\n      description,\n      completedBy,\n      video {\n        asset-> {\n          playbackId\n        }\n      }\n    }\n  },\n  completedBy,\n  \"moduleCount\": count(modules),\n  \"lessonCount\": count(modules[]->lessons[]),\n  \"completedLessonCount\": count(modules[]->lessons[]->completedBy[@==$userId])\n}": COURSE_WITH_MODULES_QUERYResult;
   }
 }
