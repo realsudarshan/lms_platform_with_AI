@@ -123,3 +123,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Ensure Clerk modal overlays appear above page content */
+.cl-modalBackdrop,
+.cl-modal,
+.cl-rootBox,
+.cl-card,
+[data-clerk-portal],
+[data-radix-portal],
+div[role="dialog"],
+.cl-internal-b3fm6y {
+  z-index: 9999 !important;
+}
+
+/* Fix for Clerk pricing table checkout modal */
+body > div:last-of-type:not(#__next):not([id^="__"]) {
+  z-index: 9999 !important;
+}
