@@ -15,13 +15,13 @@ export default function PricingPage() {
     <div className="min-h-screen bg-[#09090b] text-white">
       {/* Animated gradient mesh background */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-violet-600/15 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-emerald-600/15 rounded-full blur-[120px] animate-pulse" />
         <div
-          className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-fuchsia-600/10 rounded-full blur-[100px] animate-pulse"
+          className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-green-600/10 rounded-full blur-[100px] animate-pulse"
           style={{ animationDelay: "1s" }}
         />
         <div
-          className="absolute top-[40%] right-[20%] w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[80px] animate-pulse"
+          className="absolute top-[40%] right-[20%] w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[80px] animate-pulse"
           style={{ animationDelay: "2s" }}
         />
       </div>
@@ -41,15 +41,15 @@ export default function PricingPage() {
       <main className="relative z-10 px-6 lg:px-12 py-12 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 mb-6">
-            <Sparkles className="w-4 h-4 text-violet-400" />
-            <span className="text-sm text-violet-300">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <span className="text-sm text-emerald-300">
               Simple, transparent pricing
             </span>
           </div>
           <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
             Choose your{" "}
-            <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 bg-clip-text text-transparent">
               learning path
             </span>
           </h1>
@@ -102,8 +102,8 @@ export default function PricingPage() {
                 },
                 pricingTableCard: {
                   borderRadius: "1rem",
-                  border: "1px solid rgba(139, 92, 246, 0.2)",
-                  boxShadow: "0 10px 40px rgba(139, 92, 246, 0.1)",
+                  border: "1px solid rgba(16, 185, 129, 0.2)",
+                  boxShadow: "0 10px 40px rgba(16, 185, 129, 0.1)",
                   transition: "all 0.3s ease",
                   overflow: "hidden",
                   background: "rgba(24, 24, 27, 0.8)",
@@ -111,7 +111,7 @@ export default function PricingPage() {
                 },
                 pricingTableCardHeader: {
                   background:
-                    "linear-gradient(135deg, rgb(139 92 246), rgb(192 132 252))",
+                    "linear-gradient(135deg, rgb(16 185 129), rgb(52 211 153))",
                   color: "white",
                   borderRadius: "1rem 1rem 0 0",
                   padding: "2rem",
@@ -158,9 +158,9 @@ export default function PricingPage() {
                   transition: "all 0.2s ease",
                   fontSize: "1rem",
                   background:
-                    "linear-gradient(135deg, rgb(139 92 246), rgb(192 132 252))",
+                    "linear-gradient(135deg, rgb(16 185 129), rgb(52 211 153))",
                   border: "none",
-                  boxShadow: "0 4px 15px rgba(139, 92, 246, 0.3)",
+                  boxShadow: "0 4px 15px rgba(16, 185, 129, 0.3)",
                 },
                 pricingTableCardPeriodToggle: {
                   color: "white",
@@ -170,7 +170,7 @@ export default function PricingPage() {
             fallback={
               <div className="flex items-center justify-center py-20">
                 <div className="text-center space-y-4">
-                  <Loader2 className="h-12 w-12 animate-spin text-violet-500 mx-auto" />
+                  <Loader2 className="h-12 w-12 animate-spin text-emerald-500 mx-auto" />
                   <p className="text-zinc-400 text-lg font-medium">
                     Loading pricing options...
                   </p>
@@ -186,14 +186,14 @@ export default function PricingPage() {
             Questions?{" "}
             <Link
               href="#"
-              className="text-violet-400 hover:text-violet-300 underline underline-offset-4"
+              className="text-emerald-400 hover:text-emerald-300 underline underline-offset-4"
             >
               Contact us
             </Link>{" "}
             or check out our{" "}
             <Link
               href="#"
-              className="text-violet-400 hover:text-violet-300 underline underline-offset-4"
+              className="text-emerald-400 hover:text-emerald-300 underline underline-offset-4"
             >
               FAQ
             </Link>
@@ -205,7 +205,7 @@ export default function PricingPage() {
       <footer className="relative z-10 px-6 lg:px-12 py-12 border-t border-zinc-800/50 max-w-7xl mx-auto mt-20">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
               <Code2 className="w-4 h-4 text-white" />
             </div>
             <span className="font-bold">Sonny&apos;s Academy</span>
