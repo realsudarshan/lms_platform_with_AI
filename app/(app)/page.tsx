@@ -18,13 +18,15 @@ import {
 } from "lucide-react";
 import { sanityFetch } from "@/sanity/lib/live";
 import { currentUser } from "@clerk/nextjs/server";
-import { FEATURED_COURSES_QUERY } from "@/sanity/lib/queries";
+import { FEATURED_COURSES_QUERY, STATS_QUERY } from "@/sanity/lib/queries";
+import { CourseCard } from "@/components/courses/CourseCard";
 
 export default async function Home() {
 const isSignedIn = await currentUser().then(user => !!user);
   // Fetch featured courses, stats, and check auth status
-  const [{ data: courses }, user] = await Promise.all([
+  const [{ data: courses },{ data: stats }, user] = await Promise.all([
     sanityFetch({ query: FEATURED_COURSES_QUERY }),
+     sanityFetch({ query: STATS_QUERY }),
     currentUser(),
   ]);
   return (
@@ -143,6 +145,34 @@ const isSignedIn = await currentUser().then(user => !!user);
             </div>
 
             {/* Stats */}
+              <div
+              className="mt-16 grid grid-cols-3 gap-8 md:gap-16 animate-fade-in"
+              style={{ animationDelay: "0.5s" }}
+            >
+              {[
+                {
+                  value: stats?.courseCount ?? 0,
+                  label: "Courses",
+                  icon: BookOpen,
+                },
+                {
+                  value: stats?.lessonCount ?? 0,
+                  label: "Lessons",
+                  icon: Play,
+                },
+                { value: "10K+", label: "Students", icon: Users },
+              ].map((stat) => (
+                <div key={stat.label} className="flex flex-col items-center">
+                  <div className="flex items-center gap-2 mb-1">
+                    <stat.icon className="w-4 h-4 text-violet-400" />
+                    <span className="text-2xl md:text-3xl font-bold text-white">
+                      {stat.value}
+                    </span>
+                  </div>
+                  <span className="text-sm text-zinc-500">{stat.label}</span>
+                </div>
+              ))}
+            </div>
 
 
 {/* Featured courses */}

@@ -42,3 +42,31 @@ export const STATS_QUERY = defineQuery(`{
   "courseCount": count(*[_type == "course"]),
   "lessonCount": count(*[_type == "lesson"])
 }`);
+export const DASHBOARD_COURSES_QUERY = defineQuery(`*[
+  _type == "course"
+] | order(_createdAt desc) {
+  _id,
+  title,
+  slug,
+  description,
+  tier,
+  featured,
+  completedBy,
+  thumbnail {
+    asset-> {
+      _id,
+      url
+    }
+  },
+  category-> {
+    _id,
+    title
+  },
+  modules[]-> {
+    lessons[]-> {
+      completedBy
+    }
+  },
+  "moduleCount": count(modules),
+  "lessonCount": count(modules[]->lessons[])
+}`);
