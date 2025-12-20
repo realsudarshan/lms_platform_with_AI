@@ -113,3 +113,80 @@ export const COURSE_WITH_MODULES_QUERY = defineQuery(`*[
   "lessonCount": count(modules[]->lessons[]),
   "completedLessonCount": count(modules[]->lessons[]->completedBy[@==$userId])
 }`);
+
+export const LESSON_BY_SLUG_QUERY = defineQuery(`*[
+  _type == "lesson"
+  && slug.current == $slug
+][0] {
+  _id,
+  title,
+  slug,
+  description,
+  video {
+    asset-> {
+      playbackId,
+      status,
+      data {
+        duration
+      }
+    }
+  },
+  content,
+  completedBy,
+  "courses": *[_type == "course" && ^._id in modules[]->lessons[]->_id] | order(
+    select(tier == "free" => 0, tier == "pro" => 1, tier == "ultra" => 2)
+  ) {
+    _id,
+    title,
+    slug,
+    tier,
+    modules[]-> {
+      _id,
+      title,
+      lessons[]-> {
+        _id,
+        title,
+        slug,
+        completedBy
+      }
+    }
+  }
+}`);
+export const LESSON_BY_ID_QUERY = defineQuery(`*[
+  _type == "lesson"
+  && _id == $id
+][0] {
+  _id,
+  title,
+  slug,
+  description,
+  video {
+    asset-> {
+      playbackId,
+      status,
+      data {
+        duration
+      }
+    }
+  },
+  content,
+  completedBy,
+  "courses": *[_type == "course" && ^._id in modules[]->lessons[]->_id] | order(
+    select(tier == "free" => 0, tier == "pro" => 1, tier == "ultra" => 2)
+  ) {
+    _id,
+    title,
+    slug,
+    tier,
+    modules[]-> {
+      _id,
+      title,
+      lessons[]-> {
+        _id,
+        title,
+        slug,
+        completedBy
+      }
+    }
+  }
+}`);
