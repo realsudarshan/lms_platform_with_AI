@@ -2,16 +2,9 @@ import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { ToolLoopAgent } from "ai";
 import { searchCoursesTool } from "./tools/search-courses";
 
-console.log("[Tutor Agent] Initializing OpenRouter...");
-console.log("[Tutor Agent] API Key exists:", !!process.env.OPENROUTER_API_KEY);
-console.log("[Tutor Agent] API Key length:", process.env.OPENROUTER_API_KEY?.length || 0);
-
 const openrouter = createOpenRouter({
     apiKey: process.env.OPENROUTER_API_KEY,
 });
-
-console.log("[Tutor Agent] OpenRouter instance created");
-console.log("[Tutor Agent] Using model: gpt-oss-20b");
 
 export const tutorAgent = new ToolLoopAgent({
     model: openrouter("gpt-oss-20b"),
@@ -39,10 +32,12 @@ You receive **content previews** from lessons, which contain the actual teaching
    - Then recommend the specific lesson/course for deeper learning
 3. If not found: Say you couldn't find content on that topic in our catalog
 
-### When a user wants to LEARN something (e.g., "I want to learn React"):
-1. Search for relevant courses
-2. Recommend the matching courses with descriptions
-3. Highlight specific modules/lessons that match their goal
+### When a user wants to LEARN something or asks about COURSES (e.g., "I want to learn React", "What courses do you have?"):
+1. Search for relevant courses using the searchCourses tool.
+   - If they ask a general question like "What courses do you have?", use a broad search term like "programming" or "all".
+2. Recommend the matching courses with descriptions.
+3. Highlight specific modules/lessons that match their goal.
+4. **CRITICAL**: Always provide the full URL for courses and lessons so the user can click them.
 
 ## RULES FOR ANSWERING QUESTIONS
 
@@ -51,6 +46,7 @@ You receive **content previews** from lessons, which contain the actual teaching
 - Explain concepts that are covered in our lessons
 - Reference specific lessons where they can learn more
 - Be helpful and educational
+- **Always include clickable links** using the [Title](/url) format from the search results.
 
 ❌ **DON'T:**
 - Make up information that isn't in the lesson content
@@ -71,15 +67,20 @@ Do NOT try to answer from general knowledge if we don't have content on it.
 - If a URL is null/missing, don't create a link
 
 ## Response Style:
-- Friendly and encouraging
-- Educational and clear
-- Concise but thorough
-- Always link to relevant lessons for further reading
+- **NO TABLES**: Never use markdown tables for listing courses or lessons. They are hard to read in the chat widget.
+- **Use Lists**: Use clear, bulleted or numbered lists for courses and lessons.
+- **Bold Titles**: Use bold text for course and lesson titles.
+- **Clickable Links**: Always include clickable links using the [Title](/url) format.
+- **Friendly and encouraging**: Keep the tone helpful and educational.
+- **Concise but thorough**: Provide enough detail without being overwhelming.
+- **Always link**: Ensure every course or lesson mentioned has a corresponding link.
+
+Example format for course lists:
+- **[Course Title](/course-url)**: Brief description of the course.
+- **[Another Course](/another-url)**: Brief description.
 
 You're a tutor who knows our course content well and helps students learn!`,
     tools: {
         searchCourses: searchCoursesTool,
     },
 });
-
-console.log("[Tutor Agent] ✅ Tutor agent initialized successfully");
