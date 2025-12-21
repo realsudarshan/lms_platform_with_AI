@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { SanityLive } from "@/sanity/lib/live";
 import { ClerkProvider } from "@clerk/nextjs";
+import { TutorWidget } from "@/components/tutor";
 
 function AppLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -8,6 +9,7 @@ function AppLayout({ children }: Readonly<{ children: React.ReactNode }>) {
         
       <div>{children}</div>
         <SanityLive />
+        {/* <TutorWidget /> */}
     </ClerkProvider>
   );
 }
