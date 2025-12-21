@@ -25,8 +25,8 @@ function TutorPanel() {
       {/* Slide-out Panel */}
       <div
         className={`
-          fixed top-4 bottom-4 right-4 z-50
-          w-[calc(100%-32px)] sm:w-[500px] lg:w-[600px]
+          fixed top-8 bottom-8 right-8 z-50
+          w-[calc(100%-64px)] sm:w-[400px] lg:w-[450px]
           transform transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
           ${isOpen ? "translate-x-0 opacity-100 scale-100" : "translate-x-12 opacity-0 scale-95 pointer-events-none"}
         `}
@@ -37,7 +37,7 @@ function TutorPanel() {
             bg-slate-900/60 backdrop-blur-xl
             border border-emerald-500/20
             shadow-[0_0_50px_-12px_rgba(16,185,129,0.25)]
-            rounded-[2.5rem]
+            rounded-3xl
             flex flex-col
             overflow-hidden
           "
@@ -46,23 +46,23 @@ function TutorPanel() {
           <div
             className="
               flex items-center justify-between
-              px-8 py-6
+              px-6 py-4
               bg-emerald-500/5
               border-b border-emerald-500/10
             "
           >
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-4">
               <div className="relative">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/30 ring-2 ring-emerald-400/20">
-                  <Sparkles className="w-7 h-7 text-white" />
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/30 ring-2 ring-emerald-400/20">
+                  <Sparkles className="w-6 h-6 text-white" />
                 </div>
-                <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full border-4 border-slate-900" />
+                <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-400 rounded-full border-[3px] border-slate-900" />
               </div>
               <div>
-                <h3 className="font-bold text-white text-xl tracking-tight">
+                <h3 className="font-bold text-white text-lg tracking-tight">
                   AI Tutor
                 </h3>
-                <p className="text-sm font-medium text-emerald-400/80">
+                <p className="text-xs font-medium text-emerald-400/80">
                   Ultra Exclusive • Always Online
                 </p>
               </div>
@@ -71,14 +71,14 @@ function TutorPanel() {
               type="button"
               onClick={closeChat}
               className="
-                p-3 rounded-2xl
+                p-2 rounded-xl
                 text-slate-400 hover:text-white
                 hover:bg-emerald-500/10
                 transition-all duration-200
               "
               aria-label="Close chat"
             >
-              <PanelRightClose className="w-7 h-7" />
+              <PanelRightClose className="w-6 h-6" />
             </button>
           </div>
 

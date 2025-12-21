@@ -9,8 +9,6 @@ const clerkProxy = clerkMiddleware(async (auth, request) => {
   if (isStudioRoute(request)) {
     const { sessionClaims } = await auth();
 
-    // Accessing role from publicMetadata
-    // Note: You must add "public_metadata" to your Session Token in Clerk Dashboard
     const role = (sessionClaims?.metadata as { role?: string })?.role;
 
     if (role !== 'admin') {
@@ -19,7 +17,6 @@ const clerkProxy = clerkMiddleware(async (auth, request) => {
     }
   }
 
-  // 2. Protect all other non-public routes
   if (!isPublicRoute(request)) {
     await auth.protect();
   }

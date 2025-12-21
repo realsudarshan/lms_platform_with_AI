@@ -49,13 +49,13 @@ export function TutorChat() {
   return (
     <div className="flex flex-col h-full">
       {/* Messages Container - Scrollable */}
-      <div className="flex-1 overflow-y-auto px-6 py-6 space-y-5">
+      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
         <TutorMessages messages={messages} isLoading={isLoading} />
         <div ref={messagesEndRef} />
       </div>
 
       {/* Input Area - Fixed at bottom */}
-      <div className="shrink-0 p-8 pt-4">
+      <div className="shrink-0 p-4 pt-2">
         <form onSubmit={handleSubmit} className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl blur opacity-20 group-focus-within:opacity-40 transition duration-500" />
           <input
@@ -68,11 +68,11 @@ export function TutorChat() {
             className="
               relative
               w-full
-              px-6 py-5 pr-16
+              px-4 py-3 pr-14
               bg-slate-900/40 backdrop-blur-md
               border border-emerald-500/20
-              rounded-2xl
-              text-white text-lg
+              rounded-xl
+              text-white text-base
               placeholder:text-slate-500
               focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40
               disabled:opacity-50 disabled:cursor-not-allowed
@@ -83,13 +83,13 @@ export function TutorChat() {
             type="submit"
             disabled={isLoading || !inputValue.trim()}
             className="
-              absolute right-3 top-1/2 -translate-y-1/2
-              p-3
+              absolute right-2 top-1/2 -translate-y-1/2
+              p-2.5
               bg-gradient-to-br from-emerald-500 to-teal-600
               hover:from-emerald-400 hover:to-teal-500
               disabled:from-slate-700 disabled:to-slate-800
               disabled:cursor-not-allowed
-              rounded-xl
+              rounded-lg
               shadow-lg shadow-emerald-900/20
               hover:shadow-emerald-500/40
               hover:-translate-y-0.5 active:translate-y-0
@@ -99,14 +99,14 @@ export function TutorChat() {
             aria-label="Send message"
           >
             {isLoading ? (
-              <Loader2 className="w-6 h-6 text-white animate-spin" />
+              <Loader2 className="w-5 h-5 text-white animate-spin" />
             ) : (
-              <Send className="w-6 h-6 text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+              <Send className="w-5 h-5 text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
             )}
           </button>
         </form>
         <p className="mt-4 text-xs font-medium text-slate-500 text-center uppercase tracking-widest">
-          Powered by Sonny's AI • Ultra Exclusive
+          Powered by LMS's AI • Ultra Exclusive
         </p>
       </div>
     </div>

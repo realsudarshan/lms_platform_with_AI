@@ -85,7 +85,7 @@ export function TutorMessages({ messages, isLoading }: TutorMessagesProps) {
                 {/* Avatar */}
                 <div
                   className={`
-                    shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg
+                    shrink-0 w-10 h-10 rounded-xl flex items-center justify-center shadow-lg
                     ${message.role === "assistant"
                       ? "bg-gradient-to-br from-emerald-400 to-teal-600 shadow-emerald-500/20"
                       : "bg-gradient-to-br from-slate-700 to-slate-800 shadow-slate-900/20"
@@ -93,16 +93,16 @@ export function TutorMessages({ messages, isLoading }: TutorMessagesProps) {
                   `}
                 >
                   {message.role === "assistant" ? (
-                    <Sparkles className="w-6 h-6 text-white" />
+                    <Sparkles className="w-5 h-5 text-white" />
                   ) : (
-                    <User className="w-6 h-6 text-white" />
+                    <User className="w-5 h-5 text-white" />
                   )}
                 </div>
 
                 {/* Message Bubble */}
                 <div
                   className={`
-                    max-w-[85%] px-6 py-5 rounded-[2rem] text-lg leading-relaxed shadow-sm backdrop-blur-md border
+                    max-w-[85%] px-4 py-3 rounded-2xl text-base leading-relaxed shadow-sm backdrop-blur-md border
                     ${message.role === "assistant"
                       ? "bg-white/10 text-slate-200 border-white/10 rounded-tl-sm"
                       : "bg-emerald-500/10 text-white border-emerald-500/20 rounded-tr-sm"
@@ -120,14 +120,14 @@ export function TutorMessages({ messages, isLoading }: TutorMessagesProps) {
       {/* Loading indicator */}
       {isLoading && messages[messages.length - 1]?.role === "user" && (
         <div className="flex gap-4 animate-in fade-in duration-500">
-          <div className="shrink-0 w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
-            <Sparkles className="w-6 h-6 text-white" />
+          <div className="shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+            <Sparkles className="w-5 h-5 text-white" />
           </div>
-          <div className="bg-white/10 backdrop-blur-md border border-white/10 px-6 py-5 rounded-[2rem] rounded-tl-sm">
-            <div className="flex gap-2">
-              <span className="w-3 h-3 bg-emerald-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
-              <span className="w-3 h-3 bg-emerald-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
-              <span className="w-3 h-3 bg-emerald-400 rounded-full animate-bounce" />
+          <div className="bg-white/10 backdrop-blur-md border border-white/10 px-4 py-3 rounded-2xl rounded-tl-sm">
+            <div className="flex gap-1.5">
+              <span className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
+              <span className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
+              <span className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-bounce" />
             </div>
           </div>
         </div>
@@ -167,19 +167,19 @@ function ToolCallUI({ toolPart }: { toolPart: ToolCallPart }) {
 
   return (
     <div className="flex gap-4 animate-in fade-in slide-in-from-left-4 duration-500">
-      <div className="shrink-0 w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
-        <Search className="w-6 h-6 text-white" />
+      <div className="shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+        <Search className="w-5 h-5 text-white" />
       </div>
       <div
         className={`
-        flex items-center gap-4 px-6 py-4 rounded-2xl text-lg backdrop-blur-md border
+        flex items-center gap-3 px-4 py-3 rounded-xl text-base backdrop-blur-md border
         ${isComplete ? "bg-emerald-500/10 border-emerald-500/20" : "bg-slate-800/40 border-white/5"}
       `}
       >
         {isComplete ? (
-          <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
+          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
         ) : (
-          <Loader2 className="w-6 h-6 text-emerald-400 animate-spin shrink-0" />
+          <Loader2 className="w-5 h-5 text-emerald-400 animate-spin shrink-0" />
         )}
         <div className="flex flex-col">
           <span
@@ -237,13 +237,13 @@ function MessageContent({ content }: { content: string }) {
         p: ({ children }) => <p className="mb-4 last:mb-0">{children}</p>,
         // Styled headings
         h1: ({ children }) => (
-          <h1 className="text-2xl font-bold mb-4 text-white tracking-tight">{children}</h1>
+          <h1 className="text-xl font-bold mb-3 text-white tracking-tight">{children}</h1>
         ),
         h2: ({ children }) => (
-          <h2 className="text-xl font-bold mb-3 text-white tracking-tight">{children}</h2>
+          <h2 className="text-lg font-bold mb-2 text-white tracking-tight">{children}</h2>
         ),
         h3: ({ children }) => (
-          <h3 className="text-lg font-semibold mb-2 text-white tracking-tight">
+          <h3 className="text-base font-semibold mb-2 text-white tracking-tight">
             {children}
           </h3>
         ),
@@ -279,7 +279,7 @@ function MessageContent({ content }: { content: string }) {
         },
         // Styled code blocks
         pre: ({ children }) => (
-          <pre className="p-5 rounded-2xl bg-slate-950/50 backdrop-blur-sm border border-white/5 overflow-x-auto mb-4 text-sm font-mono shadow-inner">
+          <pre className="p-3 rounded-xl bg-slate-950/50 backdrop-blur-sm border border-white/5 overflow-x-auto mb-4 text-xs font-mono shadow-inner">
             {children}
           </pre>
         ),
