@@ -1,9 +1,13 @@
-import { openai } from "@ai-sdk/openai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { ToolLoopAgent } from "ai";
 import { searchCoursesTool } from "./tools/search-courses";
 
+const openrouter = createOpenRouter({
+    apiKey: process.env.OPENROUTER_API_KEY,
+});
+
 export const tutorAgent = new ToolLoopAgent({
-    model: openai("gpt-4o"),
+    model: openrouter("gpt-oss-20b"),
     instructions: `You are a knowledgeable learning assistant for Sonny's Academy. You help Ultra members by:
 1. Finding relevant courses, modules, and lessons
 2. Answering questions based on our lesson content
