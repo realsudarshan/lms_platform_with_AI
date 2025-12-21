@@ -55,26 +55,28 @@ export function TutorChat() {
       </div>
 
       {/* Input Area - Fixed at bottom */}
-      <div className="shrink-0 p-6 border-t border-cyan-500/20 bg-slate-900/80 backdrop-blur-sm">
-        <form onSubmit={handleSubmit} className="relative">
+      <div className="shrink-0 p-8 pt-4">
+        <form onSubmit={handleSubmit} className="relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl blur opacity-20 group-focus-within:opacity-40 transition duration-500" />
           <input
             ref={inputRef}
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="What would you like to learn?"
+            placeholder="Ask me anything..."
             disabled={isLoading}
             className="
+              relative
               w-full
-              px-5 py-4 pr-14
-              bg-white/5
-              border border-cyan-500/20
-              rounded-xl
-              text-white text-base
+              px-6 py-5 pr-16
+              bg-slate-900/40 backdrop-blur-md
+              border border-emerald-500/20
+              rounded-2xl
+              text-white text-lg
               placeholder:text-slate-500
-              focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-cyan-500/40
+              focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40
               disabled:opacity-50 disabled:cursor-not-allowed
-              transition-all
+              transition-all duration-300
             "
           />
           <button
@@ -82,26 +84,29 @@ export function TutorChat() {
             disabled={isLoading || !inputValue.trim()}
             className="
               absolute right-3 top-1/2 -translate-y-1/2
-              p-2.5
-              bg-gradient-to-r from-cyan-500 to-blue-600
-              hover:from-cyan-400 hover:to-blue-500
-              disabled:from-slate-600 disabled:to-slate-700
+              p-3
+              bg-gradient-to-br from-emerald-500 to-teal-600
+              hover:from-emerald-400 hover:to-teal-500
+              disabled:from-slate-700 disabled:to-slate-800
               disabled:cursor-not-allowed
-              rounded-lg
+              rounded-xl
+              shadow-lg shadow-emerald-900/20
+              hover:shadow-emerald-500/40
+              hover:-translate-y-0.5 active:translate-y-0
               transition-all duration-200
-              group
+              group/btn
             "
             aria-label="Send message"
           >
             {isLoading ? (
-              <Loader2 className="w-5 h-5 text-white animate-spin" />
+              <Loader2 className="w-6 h-6 text-white animate-spin" />
             ) : (
-              <Send className="w-5 h-5 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <Send className="w-6 h-6 text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
             )}
           </button>
         </form>
-        <p className="mt-3 text-sm text-slate-500 text-center">
-          Powered by AI • Ultra exclusive feature
+        <p className="mt-4 text-xs font-medium text-slate-500 text-center uppercase tracking-widest">
+          Powered by Sonny's AI • Ultra Exclusive
         </p>
       </div>
     </div>
