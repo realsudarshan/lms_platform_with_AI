@@ -21,7 +21,7 @@ const components: PortableTextComponents = {
       <p className="text-zinc-300 leading-relaxed mb-4">{children}</p>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-violet-500 pl-4 my-4 italic text-zinc-400">
+      <blockquote className="border-l-4 border-emerald-500 pl-4 my-4 italic text-zinc-400">
         {children}
       </blockquote>
     ),
@@ -48,7 +48,7 @@ const components: PortableTextComponents = {
     ),
     em: ({ children }) => <em className="italic">{children}</em>,
     code: ({ children }) => (
-      <code className="bg-zinc-800 px-1.5 py-0.5 rounded text-sm text-violet-300 font-mono">
+      <code className="bg-zinc-800 px-1.5 py-0.5 rounded text-sm text-emerald-300 font-mono">
         {children}
       </code>
     ),
@@ -57,7 +57,7 @@ const components: PortableTextComponents = {
         href={value?.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-violet-400 hover:text-violet-300 underline underline-offset-2 transition-colors"
+        className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2 transition-colors"
       >
         {children}
       </a>
