@@ -9,7 +9,7 @@ function AppLayout({ children }: Readonly<{ children: React.ReactNode }>) {
         
       <div>{children}</div>
         <SanityLive />
-        {/* <TutorWidget /> */}
+        <TutorWidget />
     </ClerkProvider>
   );
 }

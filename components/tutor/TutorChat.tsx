@@ -1,8 +1,8 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { useRef, useEffect, useState, type FormEvent } from "react";
-import { Send, Loader2 } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { TutorMessages } from "./TutorMessages";
 
 export function TutorChat() {

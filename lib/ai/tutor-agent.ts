@@ -2,13 +2,20 @@ import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { ToolLoopAgent } from "ai";
 import { searchCoursesTool } from "./tools/search-courses";
 
+console.log("[Tutor Agent] Initializing OpenRouter...");
+console.log("[Tutor Agent] API Key exists:", !!process.env.OPENROUTER_API_KEY);
+console.log("[Tutor Agent] API Key length:", process.env.OPENROUTER_API_KEY?.length || 0);
+
 const openrouter = createOpenRouter({
     apiKey: process.env.OPENROUTER_API_KEY,
 });
 
+console.log("[Tutor Agent] OpenRouter instance created");
+console.log("[Tutor Agent] Using model: gpt-oss-20b");
+
 export const tutorAgent = new ToolLoopAgent({
     model: openrouter("gpt-oss-20b"),
-    instructions: `You are a knowledgeable learning assistant for Sonny's Academy. You help Ultra members by:
+    instructions: `You are a knowledgeable learning assistant for LMS project. You help Ultra members by:
 1. Finding relevant courses, modules, and lessons
 2. Answering questions based on our lesson content
 3. Guiding them to the right learning resources
@@ -74,3 +81,5 @@ You're a tutor who knows our course content well and helps students learn!`,
         searchCourses: searchCoursesTool,
     },
 });
+
+console.log("[Tutor Agent] ✅ Tutor agent initialized successfully");
