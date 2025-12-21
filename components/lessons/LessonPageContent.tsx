@@ -5,7 +5,7 @@ import { BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GatedFallback } from "@/components/courses/GatedFallback";
 import { useUserTier, hasTierAccess } from "@/lib/hooks/use-user-tier";
-//muxvideoplayer
+import { MuxVideoPlayer } from "./MuxVideoPlayer";
 import { LessonContent } from "./LessonContent";
 import { LessonCompleteButton } from "./LessonCompleteButton";
 import { LessonSidebar } from "./LessonSidebar";
@@ -85,13 +85,13 @@ export function LessonPageContent({ lesson, userId }: LessonPageContentProps) {
         {hasAccess ? (
           <>
             {/* Video Player */}
-            {/* {lesson.video?.asset?.playbackId && (
+            {lesson.video?.asset?.playbackId && (
               <MuxVideoPlayer
                 playbackId={lesson.video?.asset?.playbackId}
                 title={lesson.title ?? undefined}
                 className="mb-6"
               />
-            )} */}
+            )}
 
             {/* Lesson Header */}
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
