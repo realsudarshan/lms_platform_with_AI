@@ -11,7 +11,7 @@ import {
   Crown,
   CheckCircle2,
   Star,
-  Users,
+  Youtube,
   Trophy,
   Sparkles,
   LayoutDashboard,
@@ -160,15 +160,24 @@ const isSignedIn = await currentUser().then(user => !!user);
                   label: "Lessons",
                   icon: Play,
                 },
-                { value: "10K+", label: "Students", icon: Users },
+                { value: "1.5K+", label: "Subscribers", icon: Youtube, link: "https://www.youtube.com/@GYAN_WALLA/videos" },
               ].map((stat) => (
                 <div key={stat.label} className="flex flex-col items-center">
-                  <div className="flex items-center gap-2 mb-1">
-                    <stat.icon className="w-4 h-4 text-violet-400" />
-                    <span className="text-2xl md:text-3xl font-bold text-white">
-                      {stat.value}
-                    </span>
-                  </div>
+                  {'link' in stat && stat.link ? (
+                    <a href={stat.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 mb-1 hover:text-red-400 transition-colors">
+                      <stat.icon className="w-4 h-4 text-red-500" />
+                      <span className="text-2xl md:text-3xl font-bold text-white">
+                        {stat.value}
+                      </span>
+                    </a>
+                  ) : (
+                    <div className="flex items-center gap-2 mb-1">
+                      <stat.icon className="w-4 h-4 text-violet-400" />
+                      <span className="text-2xl md:text-3xl font-bold text-white">
+                        {stat.value}
+                      </span>
+                    </div>
+                  )}
                   <span className="text-sm text-zinc-500">{stat.label}</span>
                 </div>
               ))}
