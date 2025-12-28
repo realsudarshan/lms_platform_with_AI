@@ -6,7 +6,7 @@ import {
   ArrowRight,
   Play,
   BookOpen,
-  Code2,
+  GraduationCap,
   Rocket,
   Crown,
   CheckCircle2,
@@ -438,9 +438,9 @@ View Pricing
 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
 <div className="flex items-center gap-3">
 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-<Code2 className="w-4 h-4 text-white" />
+<GraduationCap className="w-4 h-4 text-white" />
 </div>
-<span className="font-bold">LMS Platform</span>
+<span className="font-bold">Gyan Walla Academy</span>
 </div>
 <div className="flex items-center gap-8 text-sm text-zinc-500">
 <Link href="#" className="hover:text-white transition-colors">
@@ -454,7 +454,7 @@ Contact
 </Link>
 </div>
 <p className="text-sm text-zinc-600">
-© 2024 LMS Platform. All rights reserved.
+© 2025 Gyan Walla Academy. All rights reserved.
 </p>
 </div>
 </footer>

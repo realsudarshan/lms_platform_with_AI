@@ -115,12 +115,12 @@ export const searchCoursesTool = tool({
         "Search through all courses, modules, and lessons by topic, skill, or learning goal. This searches course titles, descriptions, module content, and lesson content to find the most relevant learning material.",
     inputSchema: courseSearchSchema,
     execute: async ({ query }: z.infer<typeof courseSearchSchema>) => {
-        // Fetch all courses with their full content using the same method as the rest of the app
+        
         const { data: allCourses } = await sanityFetch({
             query: ALL_COURSES_WITH_CONTENT_QUERY,
         });
 
-        // Split query into search terms
+       
         const searchTerms = query
             .toLowerCase()
             .split(/\s+/)
@@ -134,7 +134,7 @@ export const searchCoursesTool = tool({
             };
         }
 
-        // Score and filter courses
+        
         const scoredCourses = (allCourses as Course[])
             .map((course) => ({
                 course,
