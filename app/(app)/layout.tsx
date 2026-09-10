@@ -1,12 +1,19 @@
 import { TutorWidget } from "@/components/tutor";
-import { SanityLive } from "@/sanity/lib/live";
 
-function AppLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+async function AppLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const hasSanityConfig = Boolean(
+    process.env.NEXT_PUBLIC_SANITY_PROJECT_ID &&
+      process.env.NEXT_PUBLIC_SANITY_DATASET,
+  );
+  const sanityLive = hasSanityConfig
+    ? await import("@/sanity/lib/live")
+    : null;
+
   return (
     <>
 
       <div>{children}</div>
-      <SanityLive />
+      {sanityLive ? <sanityLive.SanityLive /> : null}
       <TutorWidget />
     </>
   );

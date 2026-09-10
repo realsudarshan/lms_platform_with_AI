@@ -124,6 +124,71 @@
   }
 }
 
+.landing-shell {
+  background:
+    radial-gradient(circle at 82% 8%, rgb(245 158 11 / 0.12), transparent 24rem),
+    radial-gradient(circle at 6% 24%, rgb(16 185 129 / 0.12), transparent 30rem),
+    #0b0f0e;
+}
+
+.landing-grid {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+.landing-hero {
+  min-height: min(46rem, calc(100vh - 5rem));
+}
+
+.hero-art {
+  background: linear-gradient(
+    145deg,
+    rgb(22 163 74 / 0.2),
+    rgb(245 158 11 / 0.12)
+  );
+  border: 1px solid rgb(255 255 255 / 0.12);
+  box-shadow: 0 2rem 6rem rgb(0 0 0 / 0.28);
+}
+
+.hero-art::after {
+  content: "";
+  position: absolute;
+  inset: 1.5rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  pointer-events: none;
+}
+
+.landing-section {
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+}
+
+.landing-card {
+  background: linear-gradient(
+    145deg,
+    rgb(255 255 255 / 0.08),
+    rgb(255 255 255 / 0.025)
+  );
+  border: 1px solid rgb(255 255 255 / 0.1);
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 0.14);
+}
+
+.landing-card:hover {
+  border-color: rgb(245 158 11 / 0.45);
+}
+
+@media (max-width: 767px) {
+  .landing-hero {
+    min-height: auto;
+  }
+
+  .hero-art::after {
+    inset: 1rem;
+  }
+}
+
 /* Ensure Clerk modal overlays appear above page content */
 .cl-modalBackdrop,
 .cl-modal,

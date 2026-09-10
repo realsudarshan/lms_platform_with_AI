@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   SignedIn,
   SignedOut,
@@ -9,6 +7,15 @@ import {
   UserButton,
   useAuth,
 } from "@clerk/nextjs";
+import {
+  BookOpen,
+  GraduationCap,
+  LayoutDashboard,
+  Menu,
+  Sparkles,
+} from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -16,13 +23,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  LayoutDashboard,
-  BookOpen,
-  Sparkles,
-  Menu,
-  GraduationCap,
-} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const loggedOutLinks = [
@@ -47,7 +47,7 @@ export function Header() {
   ];
 
   return (
-    <nav className="relative z-10 flex items-center justify-between px-6 lg:px-12 py-5 max-w-7xl mx-auto">
+    <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between border-b border-white/10 px-6 py-5 lg:px-12">
       {/* Logo - links to dashboard when logged in, home when logged out */}
       <div>
         <SignedIn>
@@ -146,7 +146,7 @@ export function Header() {
             </Button>
           </SignInButton>
           <Link href="/pricing" className="hidden sm:block">
-            <Button className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white border-0 shadow-lg shadow-emerald-600/25">
+            <Button className="border-0 bg-amber-400 text-zinc-950 shadow-lg shadow-amber-500/20 hover:bg-amber-300">
               Start Learning
             </Button>
           </Link>
